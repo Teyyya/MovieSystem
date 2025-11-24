@@ -1,15 +1,13 @@
 <x-layouts.app :title="__('Genres')">
     <div class="flex h-full w-full flex-1 flex-col gap-6 rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 p-6 shadow-lg">
 
+         {{-- Success Message --}}
         @if(session('success'))
-            <div class="rounded-lg bg-green-100 p-4 text-green-700 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-700 shadow-sm">
-                <svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
+            <div id="flash-message" class="rounded-lg bg-green-100 p-4 text-green-700 dark:bg-green-900/30 dark:text-green-300">
                 {{ session('success') }}
             </div>
         @endif
-
+        
         <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800 shadow-xl">
             <div class="flex h-full flex-col p-8">
 
@@ -198,5 +196,19 @@
             document.getElementById('editGenreModal').classList.add('hidden');
             document.getElementById('editGenreModal').classList.remove('flex');
         }
+         document.addEventListener('DOMContentLoaded', () => {
+            const flashMessage = document.getElementById('flash-message');
+    
+            if (flashMessage) {
+                setTimeout(() => {
+                    flashMessage.style.transition = 'opacity 0.5s ease-out';
+                    flashMessage.style.opacity = '0';
+            
+                    setTimeout(() => {
+                        flashMessage.remove();
+                    }, 500);
+                }, 3000);
+            }
+        });
     </script>
 </x-layouts.app>
