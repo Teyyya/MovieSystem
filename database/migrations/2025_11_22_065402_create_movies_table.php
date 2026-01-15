@@ -23,6 +23,7 @@ return new class extends Migration
         $table->string('director')->nullable();
         $table->text('synopsis')->nullable();
         $table->timestamps();
+        $table->string('photo')->nullable();
     });
 }
 

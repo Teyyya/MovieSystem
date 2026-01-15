@@ -33,7 +33,16 @@
                     :current="request()->routeIs('genres.*')"
                     wire:navigate>
                     {{ __('Genres') }}
-                    </flux:navlist.item>
+                </flux:navlist.item>
+
+
+                <flux:navlist.item
+                    icon="trash"
+                    :href="route('movies.trash')"
+                    :current="request()->routeIs('movies.trash')"
+                    wire:navigate>
+                    {{ __('Trash') }}
+                </flux:navlist.item>
             </flux:navlist.group>
             </flux:navlist>
 
